@@ -35,14 +35,19 @@ func initialize() -> void:
 	if resource.salt == 0:
 		resource.salt = randi()
 
+	var idx: int = 0
+
 	for input_slot in resource.input_slots:
-		add_child(input_slot.get_node())
+		add_child(input_slot.get_node(self, idx))
+		idx += 1
 
 	for arg in resource.args:
-		add_child(arg.get_arg_node())
+		add_child(arg.get_arg_node(self, idx))
+		idx += 1
 
 	for output_slot in resource.output_slots:
-		var node: Control = output_slot.get_node()
+		var node: Control = output_slot.get_node(self, idx)
+		idx += 1
 		add_child(node)
 		if output_slot.right_show_preview:
 			node.toggle_preview_button.show()
@@ -59,8 +64,8 @@ func initialize() -> void:
 
 	title = resource.title
 	resource.node = self
-
-
+	
+	
 func _has_output_slot(arg: GaeaNodeArgument) -> bool:
 	return arg.add_output_slot
 
