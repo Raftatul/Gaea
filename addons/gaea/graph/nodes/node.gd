@@ -142,43 +142,36 @@ func load_save_data(data: Dictionary) -> void:
 static func get_color_from_type(type: SlotTypes) -> Color:
 	match type:
 		SlotTypes.VALUE_DATA:
-			return Color("9c999e")
+			return Color("f0f8ff")
 		SlotTypes.MAP_DATA:
-			return Color("45ffa2")
-		SlotTypes.TILE_INFO:
-			return Color("ff4545")
+			return Color("27ae60")
+		SlotTypes.TILE_INFO: # Material
+			return Color("eb2f06")
 		SlotTypes.VECTOR2:
-			return Color("a579ff")
+			return Color("00bfff")
 		SlotTypes.VECTOR3:
-			return Color("f9ff79")
+			return Color("8e44ad")
 		SlotTypes.NUMBER:
-			return Color.LIGHT_GRAY
+			return Color("f1c40f")
 		SlotTypes.RANGE:
-			return Color.DIM_GRAY
+			return Color("e67e22")
 		SlotTypes.BOOL:
-			return Color("3e9c59")
+			return Color("7f8c8d")
 	return Color.WHITE
 
 
 static func get_icon_from_type(type: SlotTypes) -> Texture2D:
 	match type:
 		SlotTypes.VALUE_DATA:
-			return null
+			return load("res://addons/gaea/assets/slots/square.svg")
 		SlotTypes.MAP_DATA:
-			return load("res://addons/gaea/assets/star.svg")
+			return load("res://addons/gaea/assets/slots/hexagon.svg")
 		SlotTypes.TILE_INFO:
-			return load("res://addons/gaea/assets/diamond.svg")
-		SlotTypes.VECTOR2:
-			return null
-		SlotTypes.VECTOR3:
-			return load("res://icon.svg")
-		SlotTypes.NUMBER:
-			return load("res://addons/gaea/assets/triangle.svg")
-		SlotTypes.RANGE:
-			return null
-		SlotTypes.BOOL:
-			return load("res://addons/gaea/assets/square.svg")
-	return null
+			return load("res://addons/gaea/assets/slots/diamond.svg")
+		SlotTypes.VECTOR2, SlotTypes.VECTOR3:
+			return load("res://addons/gaea/assets/slots/triangle.svg")
+
+	return load("res://addons/gaea/assets/slots/circle.svg")
 
 
 func _make_custom_tooltip(for_text: String) -> Object:

@@ -30,7 +30,7 @@ func _ready() -> void:
 		await _graph_node.ready
 
 		_input_idx = get_index()
-
+		prints(resource.name, _input_idx, add_input_slot, input_type)
 		_graph_node.set_slot(
 			_input_idx,
 			add_input_slot, input_type, GaeaGraphNode.get_color_from_type(input_type),
